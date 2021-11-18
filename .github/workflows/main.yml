@@ -23,6 +23,14 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      
+      - name: install node js
+        uses: actions/setup-node@v2-beta
+        with:
+          node-version: 14
+          
+      - name: install surge
+        run: npm install -g surge
 
       - name: Deploying On SURGE
         run: surge ./assignment01 http://carshop.surge.sh/ --token ${{secrets.webeng_assignent01}}
